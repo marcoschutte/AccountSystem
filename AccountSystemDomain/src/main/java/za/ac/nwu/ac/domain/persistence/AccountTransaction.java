@@ -67,8 +67,7 @@ public class AccountTransaction implements Serializable {
         this.memberId = memberId;
     }
 
-    public void setAmount(Long amount)
-    {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 
