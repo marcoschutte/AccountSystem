@@ -55,7 +55,6 @@ public class AccountTypeDto implements Serializable {
             notes = "The name of the AccountType",
             dataType = "java.lang.String",
             example = "Miles",
-            allowEmptyValue = false,
             required = true)
     public String getAccountTypeName() { return accountTypeName; }
 
@@ -69,8 +68,7 @@ public class AccountTypeDto implements Serializable {
             notes = "This is the date on which the AccountType was created",
             dataType = "java.long.String",
             example = "2020-01-01",
-            allowEmptyValue = true,
-            required = false)
+            allowEmptyValue = true)
     public LocalDate getCreationDate() { return creationDate; }
 
     public void setCreationDate(LocalDate creationDate) {
