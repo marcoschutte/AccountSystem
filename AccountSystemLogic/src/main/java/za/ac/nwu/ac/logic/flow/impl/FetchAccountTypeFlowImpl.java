@@ -28,6 +28,6 @@ public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow
     public List<AccountTypeDto> getAllAccountTypes() {
         List<AccountTypeDto> accountTypeDtos = new ArrayList<>();
         accountTypeDtos.add(new AccountTypeDto("Miles","miles", LocalDate.now()));
-        return accountTypeDtos;
+        return accountTypeDtos; //return accountTypeTranslator.getAllAccountTypes();
     }
 }
