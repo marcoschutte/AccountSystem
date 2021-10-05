@@ -6,36 +6,47 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name= "DEMO_ACCOUNT_TYPE",schema = "HR")
+@Table(name= "ACCOUNT_TX",schema = "HR")
 public class AccountTransaction implements Serializable {
 
     private static final long serialVersionUID = -1420294317019175746L;
 
-    private Long transactionId;
-    private AccountType accountType;
+    private Long accountTxId;
+    private Long accountTypeId;
     private Long memberId;
     private Long amount;
     private LocalDate transactionDate;
 
     public AccountTransaction() {
-
     }
 
-    public AccountTransaction(Long transactionId, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate)
-    {
-        this.transactionId = transactionId;
-        this.accountType = accountType;
+    public AccountTransaction(Long accountTxId, Long accountTypeId, Long memberId, Long amount, LocalDate transactionDate)  {
+        this.accountTxId = accountTxId;
+        this.accountTypeId = accountTypeId;
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
     }
 
+    public AccountTransaction(Long memberId, Long amount, LocalDate txDate) {
+        this.memberId = memberId;
+        this.amount = amount;
+        this.transactionDate = txDate;
+    }
+
     @Id
-    @SequenceGenerator(name = "VIT_RSA_GENERIC_SEQ",sequenceName = "VITRSA_SANDBOX.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIT_RSA_GENERIC_SEQ")
-    @Column(name="ACCOUNT_TX_ID") //TX_ID
-    public Long getTransactionId() {
-        return transactionId;
+    @SequenceGenerator(name = "ACCOUNT_TX_SEQ",sequenceName = "HR.ACCOUNT_TX_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_TX_SEQ")
+
+    @Column(name="ACCOUNT_TX_ID")
+    public Long getAccountTxId() {
+        return accountTxId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCOUNT_TYPE_ID")
+    public Long getAccountTypeId() {
+        return accountTypeId;
     }
 
     @Column(name = "MEMBER_ID")
@@ -53,15 +64,7 @@ public class AccountTransaction implements Serializable {
         return transactionDate;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ACCOUNT_TYPE_ID")
-    public AccountType getAccountType() {
-        return accountType;
-    }
-
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
-    }
+    public void setAccountTxId(Long accountTxId) { this.accountTxId = accountTxId; }
 
     public void setMemberId(Long memberId) {
         this.memberId = memberId;
@@ -75,8 +78,8 @@ public class AccountTransaction implements Serializable {
         this.transactionDate = transactionDate;
     }
 
-    public void setAccountType(AccountType accountType) {
-        this.accountType = accountType;
+    public void setAccountTypeId(Long accountTypeId) {
+        this.accountTypeId = accountTypeId;
     }
 
     @Override
@@ -84,19 +87,19 @@ public class AccountTransaction implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransaction that = (AccountTransaction) o;
-        return Objects.equals(transactionId, that.transactionId) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
+        return Objects.equals(accountTxId, that.accountTxId) && Objects.equals(accountTypeId, that.accountTypeId) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(transactionId, accountType, memberId, amount, transactionDate);
+        return Objects.hash(accountTxId, accountTypeId, memberId, amount, transactionDate);
     }
 
     @Override
     public String toString() {
         return "AccountTransaction{" +
-                "transactionId=" + transactionId +
-                ", accountType=" + accountType +
+                "accountTxId=" + accountTxId +
+                ", accountTypeId=" + accountTypeId +
                 ", memberId=" + memberId +
                 ", amount=" + amount +
                 ", transactionDate=" + transactionDate +
