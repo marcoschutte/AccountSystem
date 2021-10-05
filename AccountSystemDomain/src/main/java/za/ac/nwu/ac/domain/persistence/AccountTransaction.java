@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name= "DEMO_ACCOUNT_TYPE",schema = "VITRSA_SANDBOX")
+@Table(name= "DEMO_ACCOUNT_TYPE",schema = "HR")
 public class AccountTransaction implements Serializable {
 
     private static final long serialVersionUID = -1420294317019175746L;
@@ -33,7 +33,7 @@ public class AccountTransaction implements Serializable {
     @Id
     @SequenceGenerator(name = "VIT_RSA_GENERIC_SEQ",sequenceName = "VITRSA_SANDBOX.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIT_RSA_GENERIC_SEQ")
-    @Column(name="TX_ID")
+    @Column(name="ACCOUNT_TX_ID") //TX_ID
     public Long getTransactionId() {
         return transactionId;
     }
