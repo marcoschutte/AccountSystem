@@ -10,21 +10,27 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @ApiModel(value = "AccountType",
-        description = "A DTO that represents the AccountType"
-)
+        description = "A DTO that represents the AccountType")
 public class AccountTypeDto implements Serializable {
 
     private static final long serialVersionUID = -5346853206480289868L;
 
+    private Long accountTypeId;
     private String mnemonic;
     private String accountTypeName;
     private LocalDate creationDate;
 
     public AccountTypeDto() {
-
     }
 
     public AccountTypeDto(String mnemonic, String accountTypeName, LocalDate creationDate) {
+        this.mnemonic = mnemonic;
+        this.accountTypeName = accountTypeName;
+        this.creationDate = creationDate;
+    }
+
+    public AccountTypeDto(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
+        this.accountTypeId = accountTypeId;
         this.mnemonic = mnemonic;
         this.accountTypeName = accountTypeName;
         this.creationDate = creationDate;
@@ -36,6 +42,9 @@ public class AccountTypeDto implements Serializable {
         this.setMnemonic(accountType.getMnemonic());
     }
 
+    public Long getAccountTypeId() { return accountTypeId; }
+    public void setAccountTypeId(Long accountTypeId) { this.accountTypeId = accountTypeId; }
+
     @ApiModelProperty(position = 1,
             value = "AccountType Mnemonic",
             name = "Mnemonic",
@@ -44,10 +53,7 @@ public class AccountTypeDto implements Serializable {
             example = "MILES",
             required = true)
     public String getMnemonic() { return mnemonic; }
-
-    public void setMnemonic(String mnemonic) {
-        this.mnemonic = mnemonic;
-    }
+    public void setMnemonic(String mnemonic) { this.mnemonic = mnemonic; }
 
     @ApiModelProperty(position = 2,
             value = "AccountType Name",
@@ -57,23 +63,17 @@ public class AccountTypeDto implements Serializable {
             example = "Miles",
             required = true)
     public String getAccountTypeName() { return accountTypeName; }
-
-    public void setAccountTypeName(String accountTypeName) {
-        this.accountTypeName = accountTypeName;
-    }
+    public void setAccountTypeName(String accountTypeName) { this.accountTypeName = accountTypeName; }
 
     @ApiModelProperty(position = 3,
             value = "AccountType Creation Date",
             name = "CreationDate",
             notes = "This is the date on which the AccountType was created",
-            dataType = "java.long.String",
+            dataType = "java.lang.String",
             example = "2020-01-01",
             allowEmptyValue = true)
     public LocalDate getCreationDate() { return creationDate; }
-
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
-    }
+    public void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate; }
 
     @Override
     public boolean equals(Object o) {
