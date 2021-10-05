@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "DEMO_ACCOUNT_TYPE", schema = "VITRSA_SANDBOX")
+@Table(name = "DEMO_ACCOUNT_TYPE", schema = "HR")
 public class AccountType implements Serializable {
 
     private static final long serialVersionUID = -2282337104058330818L;
@@ -37,7 +37,7 @@ public class AccountType implements Serializable {
     }
 
     @Id
-    @SequenceGenerator(name = "VIT_RSA_GENERIC_SEQ", sequenceName = "VITRSA_SANDBOX.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "VIT_RSA_GENERIC_SEQ", sequenceName = "HR.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VIT_RSA_GENERIC_SEQ")
     @Column(name = "ACCOUNT_TYPE_ID")
     public Long getAccountTypeId() {
