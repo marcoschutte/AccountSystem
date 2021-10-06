@@ -12,23 +12,29 @@ public class MemberAccount implements Serializable {
     private Long accountId;
     private Long memberId;
     private Long accountTypeId;
+    private String memberFirstName;
+    private String memberLastName;
     private Long accountBalance;
     private LocalDate creationDate;
 
     public MemberAccount() {
     }
 
-    public MemberAccount(Long memberId, Long accountTypeId, Long accountBalance, LocalDate creationDate) {
+    public MemberAccount(Long memberId, Long accountTypeId, String memberFirstName, String memberLastName, Long accountBalance, LocalDate creationDate) {
         this.memberId = memberId;
         this.accountTypeId = accountTypeId;
+        this.memberFirstName = memberFirstName;
+        this.memberLastName = memberLastName;
         this.accountBalance = accountBalance;
         this.creationDate = creationDate;
     }
 
-    public MemberAccount(Long accountId, Long memberId, Long accountTypeId, Long accountBalance, LocalDate creationDate) {
+    public MemberAccount(Long accountId, Long memberId, Long accountTypeId, String memberFirstName, String memberLastName, Long accountBalance, LocalDate creationDate) {
         this.accountId = accountId;
         this.memberId = memberId;
         this.accountTypeId = accountTypeId;
+        this.memberFirstName = memberFirstName;
+        this.memberLastName = memberLastName;
         this.accountBalance = accountBalance;
         this.creationDate = creationDate;
     }
@@ -46,6 +52,12 @@ public class MemberAccount implements Serializable {
     @Column(name = "ACCOUNT_TYPE_ID")
     public Long getAccountTypeId() { return accountTypeId; }
 
+    @Column(name = "MEMBER_FIRST_NAME")
+    public String getMemberFirstName() { return memberFirstName; }
+
+    @Column(name = "MEMBER_LAST_NAME")
+    public String getMemberLastName() { return memberLastName; }
+
     @Column(name = "ACCOUNT_BALANCE")
     public Long getAccountBalance() { return accountBalance; }
 
@@ -55,6 +67,8 @@ public class MemberAccount implements Serializable {
     public void setAccountId(Long accountId) { this.accountId = accountId; }
     public void setMemberId(Long memberId) { this.memberId = memberId; }
     public void setAccountTypeId(Long accountTypeId) { this.accountTypeId = accountTypeId; }
+    public void setMemberFirstName(String memberFirstName) { this.memberFirstName = memberFirstName; }
+    public void setMemberLastName(String memberLastName) { this.memberLastName = memberLastName; }
     public void setAccountBalance(Long accountBalance) { this.accountBalance = accountBalance; }
     public void setCreationDate(LocalDate creationDate) { this.creationDate = creationDate; }
 
@@ -63,12 +77,12 @@ public class MemberAccount implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MemberAccount that = (MemberAccount) o;
-        return Objects.equals(accountId, that.accountId) && Objects.equals(memberId, that.memberId) && Objects.equals(accountTypeId, that.accountTypeId) && Objects.equals(accountBalance, that.accountBalance) && Objects.equals(creationDate, that.creationDate);
+        return Objects.equals(accountId, that.accountId) && Objects.equals(memberId, that.memberId) && Objects.equals(accountTypeId, that.accountTypeId) && Objects.equals(memberFirstName, that.memberFirstName) && Objects.equals(memberLastName, that.memberLastName) && Objects.equals(accountBalance, that.accountBalance) && Objects.equals(creationDate, that.creationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accountId, memberId, accountTypeId, accountBalance, creationDate);
+        return Objects.hash(accountId, memberId, accountTypeId, memberFirstName, memberLastName, accountBalance, creationDate);
     }
 
     @Override
@@ -77,6 +91,8 @@ public class MemberAccount implements Serializable {
                 "accountId=" + accountId +
                 ", memberId=" + memberId +
                 ", accountTypeId=" + accountTypeId +
+                ", memberFirstName='" + memberFirstName + '\'' +
+                ", memberLastName='" + memberLastName + '\'' +
                 ", accountBalance=" + accountBalance +
                 ", creationDate=" + creationDate +
                 '}';
