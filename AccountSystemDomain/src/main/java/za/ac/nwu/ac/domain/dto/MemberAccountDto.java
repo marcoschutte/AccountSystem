@@ -21,10 +21,10 @@ public class MemberAccountDto implements Serializable
     private Long accountBalance;
     private LocalDate creationDate;
 
-    public MemberAccountDto() {
-    }
+    public MemberAccountDto() {}
 
-    public MemberAccountDto(String memberFirstName, String memberLastName, Long accountBalance, LocalDate creationDate) {
+    public MemberAccountDto(String memberFirstName, String memberLastName, Long accountBalance, LocalDate creationDate)
+    {
         this.memberFirstName = memberFirstName;
         this.memberLastName = memberLastName;
         this.accountBalance = accountBalance;
