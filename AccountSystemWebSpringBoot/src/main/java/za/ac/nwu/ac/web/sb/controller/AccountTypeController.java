@@ -59,7 +59,7 @@ public class AccountTypeController {
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountTypeResponse);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-
+/*
     @GetMapping("{mnemonic}")
     @ApiOperation(value = "Fetches the specified AccountType.", notes = "Fetches the AccountType corresponding to the given mnemonic.")
     @ApiResponses(value = {
@@ -81,5 +81,6 @@ public class AccountTypeController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+ */
 }
 
