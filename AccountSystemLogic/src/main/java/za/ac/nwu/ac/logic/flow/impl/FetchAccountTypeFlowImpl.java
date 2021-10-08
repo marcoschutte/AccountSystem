@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Transactional
 @Component
 public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow
@@ -19,12 +18,14 @@ public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow
     private final AccountTypeTranslator accountTypeTranslator;
 
     @Autowired
-    public FetchAccountTypeFlowImpl(AccountTypeTranslator accountTypeTranslator) {
+    public FetchAccountTypeFlowImpl(AccountTypeTranslator accountTypeTranslator)
+    {
         this.accountTypeTranslator = accountTypeTranslator;
     }
 
     @Override
-    public List<AccountTypeDto> getAllAccountTypes() {
+    public List<AccountTypeDto> getAllAccountTypes()
+    {
         return accountTypeTranslator.getAllAccountTypes();
     }
 /*
