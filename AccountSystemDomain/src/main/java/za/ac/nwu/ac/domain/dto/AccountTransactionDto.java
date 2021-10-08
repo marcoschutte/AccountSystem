@@ -15,43 +15,24 @@ public class AccountTransactionDto implements Serializable
 {
     private static final long serialVersionUID = 3451690854380907957L;
 
-    private Long memberId;
     private Long amount;
     private LocalDate txDate;
 
     public AccountTransactionDto() {}
 
-    public AccountTransactionDto(Long memberId, Long amount, LocalDate txDate)
+    public AccountTransactionDto( Long amount, LocalDate txDate)
     {
-        this.memberId = memberId;
         this.amount = amount;
         this.txDate = txDate;
     }
 
     public AccountTransactionDto(AccountTransaction accountTransaction)
     {
-        this.setMemberId(accountTransaction.getMemberId());
         this.setAmount(accountTransaction.getAmount());
         this.setTxDate(accountTransaction.getTransactionDate());
     }
 
     @ApiModelProperty(position = 1,
-            value = "AccountTransaction Member ID",
-            name = "memberId",
-            notes = "Uniquely identifies a member",
-            dataType = "java.lang.String",
-            example = "100",
-            required = true)
-    public Long getMemberId()
-    {
-        return memberId;
-    }
-    public void setMemberId(Long memberId)
-    {
-        this.memberId = memberId;
-    }
-
-    @ApiModelProperty(position = 2,
             value = "AccountTransaction Amount",
             name = "amount",
             notes = "Transaction amount",
@@ -67,7 +48,7 @@ public class AccountTransactionDto implements Serializable
         this.amount = amount;
     }
 
-    @ApiModelProperty(position = 3,
+    @ApiModelProperty(position = 2,
             value = "AccountTransaction TX Date",
             name = "txDate",
             notes = "This is the date on which the Transaction occurred",
@@ -86,30 +67,26 @@ public class AccountTransactionDto implements Serializable
     @JsonIgnore
     public AccountTransaction getAccountTransaction()
     {
-        return new AccountTransaction(getMemberId(), getAmount(), getTxDate());
+        return new AccountTransaction(getAmount(), getTxDate());
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransactionDto that = (AccountTransactionDto) o;
-        return Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(txDate, that.txDate);
+        return Objects.equals(amount, that.amount) && Objects.equals(txDate, that.txDate);
     }
 
     @Override
-    public int hashCode()
-    {
-        return Objects.hash(memberId, amount, txDate);
+    public int hashCode() {
+        return Objects.hash(amount, txDate);
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "AccountTransactionDto{" +
-                "memberId=" + memberId +
-                ", amount=" + amount +
+                "amount=" + amount +
                 ", txDate=" + txDate +
                 '}';
     }
