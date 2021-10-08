@@ -7,26 +7,26 @@ import java.util.Objects;
 
 @Entity
 @Table(name= "ACCOUNT_TX",schema = "hr")
-public class AccountTransaction implements Serializable {
+public class AccountTransaction implements Serializable
+{
 
     private static final long serialVersionUID = 4396972763730556717L;
 
     private Long accountTxId;
     private AccountType accountType;
-    private Long memberId;
+    private MemberAccount memberId;
     private Long transactionAmount;
     private LocalDate transactionDate;
 
     public AccountTransaction() {}
 
-    public AccountTransaction(Long memberId, Long amount, LocalDate txDate)
+    public AccountTransaction(Long amount, LocalDate txDate)
     {
-        this.memberId = memberId;
         this.transactionAmount = amount;
         this.transactionDate = txDate;
     }
 
-    public AccountTransaction(Long accountTxId, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate)
+    public AccountTransaction(Long accountTxId, AccountType accountType, MemberAccount memberId, Long amount, LocalDate transactionDate)
     {
         this.accountTxId = accountTxId;
         this.accountType = accountType;
@@ -60,12 +60,13 @@ public class AccountTransaction implements Serializable {
         this.accountType = accountType;
     }
 
-    @Column(name = "MEMBER_ID")
-    public Long getMemberId()
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    public MemberAccount getMemberId()
     {
         return memberId;
     }
-    public void setMemberId(Long memberId)
+    public void setMemberId(MemberAccount memberId)
     {
         this.memberId = memberId;
     }
