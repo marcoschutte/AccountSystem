@@ -12,7 +12,6 @@ import java.util.Set;
 @Table(name = "ACCOUNT_TYPE", schema = "hr")
 public class AccountType implements Serializable
 {
-
     private static final long serialVersionUID = -8710913758940820423L;
 
     private Long accountTypeId;
