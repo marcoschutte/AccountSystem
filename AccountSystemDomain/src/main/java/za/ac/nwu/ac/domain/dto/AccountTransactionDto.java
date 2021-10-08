@@ -1,10 +1,10 @@
+
 package za.ac.nwu.ac.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import za.ac.nwu.ac.domain.persistence.AccountTransaction;
-import za.ac.nwu.ac.domain.persistence.AccountType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -12,24 +12,26 @@ import java.util.Objects;
 
 @ApiModel(value = "AccountTransaction",
         description = "A DTO that represents the AccountTransaction")
-public class AccountTransactionDto implements Serializable {
+public class AccountTransactionDto implements Serializable
+{
 
-
+    private static final long serialVersionUID = 3451690854380907957L;
 
     private Long memberId;
     private Long amount;
     private LocalDate txDate;
 
-    public AccountTransactionDto() {
-    }
+    public AccountTransactionDto() {}
 
-    public AccountTransactionDto(Long memberId, Long amount, LocalDate txDate) {
+    public AccountTransactionDto(Long memberId, Long amount, LocalDate txDate)
+    {
         this.memberId = memberId;
         this.amount = amount;
         this.txDate = txDate;
     }
 
-    public AccountTransactionDto(AccountTransaction accountTransaction) {
+    public AccountTransactionDto(AccountTransaction accountTransaction)
+    {
         this.setMemberId(accountTransaction.getMemberId());
         this.setAmount(accountTransaction.getAmount());
         this.setTxDate(accountTransaction.getTransactionDate());
@@ -42,8 +44,14 @@ public class AccountTransactionDto implements Serializable {
             dataType = "java.lang.String",
             example = "100",
             required = true)
-    public Long getMemberId() { return memberId; }
-    public void setMemberId(Long memberId) { this.memberId = memberId; }
+    public Long getMemberId()
+    {
+        return memberId;
+    }
+    public void setMemberId(Long memberId)
+    {
+        this.memberId = memberId;
+    }
 
     @ApiModelProperty(position = 2,
             value = "AccountTransaction Amount",
@@ -52,8 +60,14 @@ public class AccountTransactionDto implements Serializable {
             dataType = "java.lang.String",
             example = "1000",
             required = true)
-    public Long getAmount() { return amount; }
-    public void setAmount(Long amount) { this.amount = amount; }
+    public Long getAmount()
+    {
+        return amount;
+    }
+    public void setAmount(Long amount)
+    {
+        this.amount = amount;
+    }
 
     @ApiModelProperty(position = 3,
             value = "AccountTransaction TX Date",
@@ -62,11 +76,24 @@ public class AccountTransactionDto implements Serializable {
             dataType = "java.lang.String",
             example = "2020-01-01",
             required = true)
-    public LocalDate getTxDate() { return txDate; }
-    public void setTxDate(LocalDate txDate) { this.txDate = txDate; }
+    public LocalDate getTxDate()
+    {
+        return txDate;
+    }
+    public void setTxDate(LocalDate txDate)
+    {
+        this.txDate = txDate;
+    }
+
+    @JsonIgnore
+    public AccountTransaction getAccountTransaction()
+    {
+        return new AccountTransaction(getMemberId(), getAmount(), getTxDate());
+    }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransactionDto that = (AccountTransactionDto) o;
@@ -74,17 +101,14 @@ public class AccountTransactionDto implements Serializable {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(memberId, amount, txDate);
     }
 
-    @JsonIgnore
-    public AccountTransaction getAccountTransaction() {
-        return new AccountTransaction(getMemberId(), getAmount(), getTxDate());
-    }
-
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "AccountTransactionDto{" +
                 "memberId=" + memberId +
                 ", amount=" + amount +
