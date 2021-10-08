@@ -8,7 +8,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "MEMBER_ACCOUNT", schema = "hr")
-public class MemberAccount implements Serializable {
+public class MemberAccount implements Serializable
+{
+    private static final long serialVersionUID = 8969055249868984671L;
 
     private Long memberId;
     private String memberFirstName;
