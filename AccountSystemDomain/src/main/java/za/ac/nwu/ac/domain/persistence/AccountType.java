@@ -10,7 +10,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "ACCOUNT_TYPE", schema = "hr")
-public class AccountType implements Serializable {
+public class AccountType implements Serializable
+{
 
     private static final long serialVersionUID = -8710913758940820423L;
 

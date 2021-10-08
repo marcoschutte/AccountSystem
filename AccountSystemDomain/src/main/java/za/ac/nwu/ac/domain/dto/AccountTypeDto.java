@@ -13,7 +13,6 @@ import java.util.Objects;
         description = "A DTO that represents the AccountType")
 public class AccountTypeDto implements Serializable
 {
-
     private static final long serialVersionUID = -9177456554831411376L;
 
     private String mnemonic;

@@ -1,4 +1,3 @@
-
 package za.ac.nwu.ac.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,7 +13,6 @@ import java.util.Objects;
         description = "A DTO that represents the AccountTransaction")
 public class AccountTransactionDto implements Serializable
 {
-
     private static final long serialVersionUID = 3451690854380907957L;
 
     private Long memberId;
@@ -56,7 +54,7 @@ public class AccountTransactionDto implements Serializable
     @ApiModelProperty(position = 2,
             value = "AccountTransaction Amount",
             name = "amount",
-            notes = "Uniquely identifies a member",
+            notes = "Transaction amount",
             dataType = "java.lang.String",
             example = "1000",
             required = true)
