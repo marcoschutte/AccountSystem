@@ -18,14 +18,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("account-type")
-public class AccountTypeController {
+public class AccountTypeController
+{
 
     private final FetchAccountTypeFlow fetchAccountTypeFlow;
     private final CreateAccountTypeFlow createAccountTypeFlow;
 
     @Autowired
     public AccountTypeController(FetchAccountTypeFlow fetchAccountTypeFlow,
-                                 @Qualifier("createAccountTypeFlowName") CreateAccountTypeFlow createAccountTypeFlow) {
+                                 @Qualifier("createAccountTypeFlowName") CreateAccountTypeFlow createAccountTypeFlow)
+    {
         this.fetchAccountTypeFlow = fetchAccountTypeFlow;
         this.createAccountTypeFlow = createAccountTypeFlow;
     }
@@ -39,7 +41,8 @@ public class AccountTypeController {
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
     })
 
-    public ResponseEntity<GeneralResponse<List<AccountTypeDto>>> getAll() {
+    public ResponseEntity<GeneralResponse<List<AccountTypeDto>>> getAll()
+    {
         List<AccountTypeDto> accountTypes = fetchAccountTypeFlow.getAllAccountTypes();
         GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<>(true, accountTypes);
         return new ResponseEntity<>(response, HttpStatus.OK);
