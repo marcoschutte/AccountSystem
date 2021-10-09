@@ -20,7 +20,6 @@ import java.util.List;
 @RequestMapping("account-type")
 public class AccountTypeController
 {
-
     private final FetchAccountTypeFlow fetchAccountTypeFlow;
     private final CreateAccountTypeFlow createAccountTypeFlow;
 
